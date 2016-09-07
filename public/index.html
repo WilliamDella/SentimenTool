@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentimentool</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click='getTweets'>Tweets</button>
+        <ul id="example-1">
+            <li v-for="tweet in tweets">
+                {{ tweet.text }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                tweets: null
+            },
+            methods: {
+                getTweets: function() {
+                    var $this = this;
+                    axios.get('/tweets')
+                        .then(function (response) {
+                            $this.tweets = response.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+            }
+        });
+
+        
+    </script>
+</body>
+</html>
