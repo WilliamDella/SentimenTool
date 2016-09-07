@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Sentimentool</title>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Sentimentool</title>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+  <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
 </head>
 <body>
-    <div id="app">
-        <button v-on:click='getTweets'>Tweets</button>
-        <ul id="example-1">
-            <li v-for="tweet in tweets">
-                {{ tweet.text }}
-            </li>
-        </ul>
+
+  <nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="#">SentimenTool</a>
+  </nav>
+
+  <br />
+
+  <div class="container">
+    <div class="card" id="app">
+      <h3 class="card-header">
+        {{tweets[0].user.name}}<button class="btn btn-outline-warning pull-xs-right">Descartar</button>
+      </h3>
+      <div class="card-block">
+        <h4 class="card-title">{{tweets[0].text}}</h4>
+        <h6 class="card-subtitle text-muted">{{tweets[0].id}}</h6>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success">Positivo</button>
+        <button class="btn btn-secondary">Neutro</button>
+        <button class="btn btn-danger">Negativo</button>
+      </div>
     </div>
+  </div>
 
-    <script>
+  <br />
 
-        var vue = new Vue({
-            el: '#app',
-            data: {
-                tweets: null
-            },
-            methods: {
-                getTweets: function() {
-                    var $this = this;
-                    axios.get('/tweets')
-                        .then(function (response) {
-                            $this.tweets = response.data;
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                }
-            }
-        });
-
-        
-    </script>
+  <script src="/js/index.js"></script>
 </body>
 </html>
