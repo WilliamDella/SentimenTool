@@ -19,14 +19,15 @@
 
   <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">SentimenTool</a>
-    <button class="btn btn-outline-warning pull-xs-right">Descartar</button>
   </nav>
 
   <br />
 
   <div class="container">
     <div class="card" id="app">
-      <h3 class="card-header">{{tweets[0].user.name}}</h3>
+      <h3 class="card-header">
+        {{tweets[0].user.name}}<button class="btn btn-outline-warning pull-xs-right">Descartar</button>
+      </h3>
       <div class="card-block">
         <h4 class="card-title">{{tweets[0].text}}</h4>
         <h6 class="card-subtitle text-muted">{{tweets[0].id}}</h6>
